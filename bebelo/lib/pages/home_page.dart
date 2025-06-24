@@ -1,11 +1,15 @@
+import 'package:bebelo/components/bottom_navapp.dart';
 import 'package:bebelo/components/item_display.dart';
 import 'package:bebelo/components/promo_display.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-
   const HomePage({super.key});
-  
+
+  void changePage(BuildContext context, String pageName) {
+    Navigator.pushNamed(context, pageName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +51,9 @@ class HomePage extends StatelessWidget {
               child: PageView.builder(
                 itemCount: 3,
                 controller: PageController(viewportFraction: 0.7),
-                itemBuilder: (context, index) => PromoDisplay(imgPath: 'assets/promos/Promo1.jpg')
+                itemBuilder:
+                    (context, index) =>
+                        PromoDisplay(imgPath: 'assets/promos/Promo1.jpg'),
               ),
             ),
 
@@ -107,10 +113,30 @@ class HomePage extends StatelessWidget {
                   crossAxisSpacing: 15,
                   childAspectRatio: 0.7,
                   children: [
-                    ItemDisplay(imgPath: 'assets/products/Item1.jpg'),
-                    ItemDisplay(imgPath: 'assets/products/Item2.png'),
-                    ItemDisplay(imgPath: 'assets/products/Item3.jpg'),
-                    ItemDisplay(imgPath: 'assets/products/Item4.png'),
+                    ItemDisplay(
+                      imgPath: 'assets/products/Item1.jpg',
+                      onTap: () {
+                        changePage(context, '/product_detail');
+                      },
+                    ),
+                    ItemDisplay(
+                      imgPath: 'assets/products/Item2.png',
+                      onTap: () {
+                        changePage(context, '/product_detail');
+                      },
+                    ),
+                    ItemDisplay(
+                      imgPath: 'assets/products/Item3.jpg',
+                      onTap: () {
+                        changePage(context, '/product_detail');
+                      },
+                    ),
+                    ItemDisplay(
+                      imgPath: 'assets/products/Item4.png',
+                      onTap: () {
+                        changePage(context, '/product_detail');
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -120,19 +146,9 @@ class HomePage extends StatelessWidget {
       ),
 
       // BottomNavigationBar vacía (como pediste)
-      bottomNavigationBar: BottomAppBar(
-        height: 60,
-        color: Colors.white,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const [
-            // Espacios vacíos
-            SizedBox(),
-            SizedBox(),
-            SizedBox(),
-            SizedBox(),
-          ],
-        ),
+      bottomNavigationBar: CustomBottomNavBar(
+        selectedIndex: 0,
+        onItemTapped: (int a) {},
       ),
     );
   }

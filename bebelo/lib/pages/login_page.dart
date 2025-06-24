@@ -14,32 +14,30 @@ class LoginPage extends StatelessWidget {
 
     return Scaffold(
       body: Stack(
+        alignment: AlignmentDirectional.topCenter,
         children: [
+          SizedBox(height: 45),
+          Text(
+              'Bébelo',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
           Align(
             alignment: Alignment.topCenter,
             child: Container(
               width: screenWidth * 1.5,
               height: screenWidth * 1.5,
               decoration: const BoxDecoration(
-                shape: BoxShape.circle,
+                shape: BoxShape.rectangle,
                 image: DecorationImage(
                   image: AssetImage(
-                    'assets/background.jpg',
+                    'assets/TestBG.png',
                   ), // Reemplaza por tu imagen
                   fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
-          SizedBox(height: 25),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Text(
-              'Bébelo',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-            ),
-          ),
-          // Contenido blanco encima con borde superior redondeado
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -51,7 +49,7 @@ class LoginPage extends StatelessWidget {
                   topRight: Radius.circular(40),
                 ),
               ),
-              width: 350,
+              width: 330,
               height: MediaQuery.of(context).size.height * 0.65,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

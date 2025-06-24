@@ -61,6 +61,7 @@ flutter:
   assets:
     - assets/background.jpg
     - assets/WelcomeBG.png
+    - assets/TestBG.png
     - assets/products/Item1.jpg
     - assets/products/Item2.png
     - assets/products/Item3.jpg
