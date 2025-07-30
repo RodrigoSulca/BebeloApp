@@ -13,99 +13,84 @@ class LoginPage extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         alignment: AlignmentDirectional.topCenter,
         children: [
           SizedBox(height: 45),
-          Text(
-              'Bébelo',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-            ),
           Align(
             alignment: Alignment.topCenter,
             child: Container(
-              width: screenWidth * 1.5,
-              height: screenWidth * 1.5,
+              width: screenWidth* 1.5,
+              height: screenWidth * 1.3,
               decoration: const BoxDecoration(
                 shape: BoxShape.rectangle,
                 image: DecorationImage(
                   image: AssetImage(
                     'assets/TestBG.png',
-                  ), // Reemplaza por tu imagen
+                  ),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              padding: const EdgeInsets.fromLTRB(30, 40, 30, 40),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40),
-                  topRight: Radius.circular(40),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 40),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(30, 40, 30, 40),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(40),
                 ),
-              ),
               width: 330,
               height: MediaQuery.of(context).size.height * 0.65,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 25),
-                  // Selector Registrarse / Iniciar Sesión
-                  Row(
-                    children: [
-                      // Registrarse
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              bottomLeft: Radius.circular(30),
+                    SizedBox(
+                      width: screenWidth,
+                      height: 50,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            left: 0,
+                            child: CustomButton(
+                              text: 'Registrarse',
+                              onTap: () {
+                                changePage(context, '/register');
+                              },
+                              bgColor: Colors.grey[300],
+                              widthButon: 40,
+                              heightButton: 10,
                             ),
                           ),
-                          alignment: Alignment.center,
-                          child: const Text(
-                            'Registrarse',
-                            style: TextStyle(color: Colors.black54),
-                          ),
-                        ),
-                      ),
-                      // Iniciar Sesión (activo)
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          decoration: const BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(30),
-                              bottomRight: Radius.circular(30),
+                          Positioned(
+                            left: 130,
+                            child: CustomButton(
+                              text: 'Iniciar Sesion',
+                              onTap: () {
+                                
+                              },
+                              widthButon: 20,
+                              heightButton: 10,
                             ),
                           ),
-                          alignment: Alignment.center,
-                          child: const Text(
-                            'Iniciar Sesion',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
+                          
+                          
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
 
                   const SizedBox(height: 30),
-
-                  const Text(
+                  Center(
+                    child: Text(
                     'Bienvenido a Bebelo',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                   ),
-
-                  const SizedBox(height: 20),
-
+                  ),
+                  const SizedBox(height: 30),
                   const TextField(
                     decoration: InputDecoration(
                       labelText: 'Correo',
@@ -121,7 +106,7 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 70),
 
                   SizedBox(
                     width: double.infinity,
@@ -148,7 +133,8 @@ class LoginPage extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
+              ),
+            )   
           ),
         ],
       ),

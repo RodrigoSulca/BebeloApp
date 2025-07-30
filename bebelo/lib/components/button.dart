@@ -5,6 +5,8 @@ class CustomButton extends StatelessWidget {
   final String text;
   final double widthButon;
   final double heightButton;
+  final double? fontSize;
+  final Color? bgColor;
 
   const CustomButton({
     super.key,
@@ -12,6 +14,8 @@ class CustomButton extends StatelessWidget {
     required this.onTap,
     required this.widthButon,
     required this.heightButton,
+    this.fontSize = 16,
+    this.bgColor = Colors.black
   });
 
   @override
@@ -19,20 +23,21 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
-        ),
-        backgroundColor: Colors.black,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        backgroundColor: bgColor,
         foregroundColor: Colors.white,
-        padding: EdgeInsets.symmetric(horizontal: widthButon, vertical: heightButton),
+        padding: EdgeInsets.symmetric(
+          horizontal: widthButon,
+          vertical: heightButton,
+        ),
       ),
       child: Text(
         text,
         style: TextStyle(
-          fontSize: 16,
+          fontSize: fontSize ?? 16,
           color: Colors.white,
-          fontWeight: FontWeight.bold
-        )
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
